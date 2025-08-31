@@ -13,8 +13,13 @@ body {
   color: white;
 }
 
-shop-container {
-  display: flex;
+#shop-container {
+  width: 60%;  
+  height: 200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  margin-left: auto;
+  margin-right: auto;
   
 }
 
@@ -40,8 +45,14 @@ shop-container {
   cursor: pointer;
 }
 
-button {
+#shop-container button {
   font-size: 15px;
+}
+
+#shop-container button:hover{
+    cursor: pointer;
+    background-color: rgba(243, 215, 179, 0.952);
+
 }
 
 #game-n-count {
@@ -49,6 +60,22 @@ button {
   padding-bottom: 25px;
 }
 
-/* #shop-container{
-    
-} */
+#reset {
+    font-size: 25px;
+    border-radius: 15px;
+    margin-top: 30px;
+    padding: 10px;
+    color: white;
+    background-color: black;
+}
+
+#reset:hover{
+    cursor: pointer;
+    color: rgb(246, 211, 211);
+
+}
+
+.counts {
+    font-size: 1.5rem;
+}
+
