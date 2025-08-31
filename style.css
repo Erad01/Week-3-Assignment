@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: peru;
+  color: white;
+}
+
+shop-container {
+  display: flex;
+  
+}
+
+#game-container {
+  background-color: brown;
+}
+
+#cookie-image {
+  width: 30%;
+
+  border-radius: 15px;
+}
+
+#cookie-count {
+  font-size: 1.5rem;
+}
+
+#cookie-per-sec {
+  font-size: 1.5rem;
+}
+
+#cookie-image:hover {
+  cursor: pointer;
+}
+
+button {
+  font-size: 15px;
+}
+
+#game-n-count {
+  margin: auto;
+  padding-bottom: 25px;
+}
+
+/* #shop-container{
+    
+} */

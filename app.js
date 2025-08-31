@@ -4,8 +4,9 @@ const cookieImage = document.getElementById("cookie-image");
 let cookieCountDisplay = document.getElementById("cookie-count");
 let cookerPerSecondDisplay = document.getElementById("cookie-per-sec");
 let shopContainer = document.getElementById("shop-container");
+let resetButton = document.getElementById("reset");
 
-let upgradeData = []
+let upgradeData = [];
 
 const stats = {
   cookieCount: 0,
@@ -20,12 +21,11 @@ function saveData() {
 function loadData() {
   const retrieveData = localStorage.getItem("stat");
   const saveData = JSON.parse(retrieveData);
-  if(saveData){
+  if (saveData) {
     stats.cookieCount = saveData.cookieCount;
     stats.cookiePerSecond = saveData.cookiePerSecond;
     cookieCountDisplay.textContent = stats.cookieCount;
-    }
-  
+  }
 }
 
 loadData();
@@ -62,38 +62,46 @@ async function createUpgrades() {
     upgrade.addEventListener("click", decreaseCookie);
 
     upgrades.appendChild(upgrade);
-
-  
   }
 }
-createUpgrades()
+createUpgrades();
 
-function decreaseCookie(event){
-    let clickedName = event.target.textContent;
-    for (let i = 0; i < upgradeData.length; i++) {
-        if (clickedName === upgradeData[i].name) {
-            const costData = upgradeData[i].cost;
-            const cpsData = upgradeData[i].increase;
-            if (stats.cookieCount >= costData) {
-                stats.cookieCount -= costData;
-                stats.cookiePerSecond += cpsData;
-                cookieCountDisplay.textContent = stats.cookieCount;
-                cookerPerSecondDisplay.textContent = stats.cookerPerSecondDisplay;
-                saveData();
-            }else{
-                alert("Not enough cookies")
-            } 
-        }
+function decreaseCookie(event) {
+  let clickedName = event.target.textContent;
+  for (let i = 0; i < upgradeData.length; i++) {
+    if (clickedName === upgradeData[i].name) {
+      const costData = upgradeData[i].cost;
+      const cpsData = upgradeData[i].increase;
+      if (stats.cookieCount >= costData) {
+        stats.cookieCount -= costData;
+        stats.cookiePerSecond += cpsData;
+        cookieCountDisplay.textContent = stats.cookieCount;
+        cookerPerSecondDisplay.textContent = stats.cookerPerSecondDisplay;
+        saveData();
+      } else {
+        alert("Not enough cookies");
+      }
     }
+  }
 }
-
 
 //the interval
 setInterval(function () {
   stats.cookieCount += stats.cookiePerSecond; //cookieCount = cookieCount + cps
-//update the text content in the DOM with the new values
+  //update the text content in the DOM with the new values
   cookieCountDisplay.textContent = stats.cookieCount;
   cookerPerSecondDisplay.textContent = stats.cookiePerSecond;
-  saveData();
-//save the new values in local storage
+  //save the new values in local storage
 }, 1000);
+
+saveData();
+
+function resetGame() {
+  localStorage.removeItem(stats);
+  stats.cookieCount = 0;
+  stats.cookiePerSecond = 0;
+  cookieCountDisplay.textContent = stats.cookieCount;
+  cookerPerSecondDisplay.textContent = stats.cookiePerSecond;
+}
+
+resetButton.addEventListener("click", resetGame);

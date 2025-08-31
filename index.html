@@ -8,12 +8,19 @@
     <script src="app.js" defer></script>
 </head>
 <body>
-    <!-- a clickable element, for example, an img of a cookie -->
-    <img src="./asset-folder/cookie.jpg" width="300px" height="200px" alt="a cookie" id="cookie-image"/>
-    <!-- the cookie total and the cps (cookies per second) -->
-    <p>Cookie Count:<span id="cookie-count"></span></p>
-    <p>CPS:<span id="cookie-per-sec"></span></span> </p>
-    <!-- shop container -->
-    <div id="shop-container"></div>
+    <h2>Cookie Clicker</h2>
+    <div id="game-container">
+        <!-- a clickable element, for example, an img of a cookie -->
+        <div id="game-n-count">
+            <img src="./asset-folder/cookie.jpg" alt="a cookie" id="cookie-image"/>
+            <!-- the cookie total and the cps (cookies per second) -->
+            <p>Cookie Count:<span id="cookie-count"></span></p>
+            <p>CPS:<span id="cookie-per-sec"></span></span> </p>
+        <!-- shop container -->
+        </div>
+        
+        <div id="shop-container"></div>
+    </div>
+    <button id="reset">RESET</button>
 </body>
 </html>
